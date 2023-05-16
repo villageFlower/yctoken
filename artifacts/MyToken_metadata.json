@@ -109,30 +109,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_spender",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_value",
-						"type": "uint256"
-					}
-				],
-				"name": "approve",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "success",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -146,6 +122,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "_recipients",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_amounts",
+						"type": "uint256[]"
+					}
+				],
+				"name": "batchTransfer",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -282,11 +276,11 @@
 	},
 	"sources": {
 		"my_token.sol": {
-			"keccak256": "0xaf3c7f0e7269446b6e228b9ba2e2a34a24862fe643a77d02f5ee648d957dd6bc",
+			"keccak256": "0xe975334832b1eb39a825d7fb02528041acd62ec3b5d5808eaf2832dade7ac614",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://04458d872658dfba990d875b659bf0c4c3e2e98605188393e9f059f554b11182",
-				"dweb:/ipfs/QmSeB2yTUCcrWvNrhG5Nm3ctGYsdjeFLgxy5F9i81A7i8Y"
+				"bzz-raw://cf73332dd061f6d39bc744ca30981cccccd03c07019b538fd96c53643b039ace",
+				"dweb:/ipfs/QmeDdbz998A4eKvnxKrcoFGQSad3CSNgcD6cQjPtC2nnne"
 			]
 		}
 	},
