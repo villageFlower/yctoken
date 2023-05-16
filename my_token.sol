@@ -32,9 +32,11 @@ contract MyToken {
         //check the balance of sender is larger or equal to value
         require(balanceOf[msg.sender] >= _value, "Insufficient balance");
         //deduct the value from sender's balance
-        balanceOf[msg.sender] -= _value;
+        updatebalance(msg.sender, balanceOf[msg.sender] - _value);
+        // balanceOf[msg.sender] -= _value;
         //add the value to receiver's balance
-        balanceOf[_to] += _value;
+        updatebalance(_to, balanceOf[_to] + _value);
+        // balanceOf[_to] += _value;
         // emit the event
         emit Transfer(msg.sender, _to, _value);
         return true;
@@ -54,15 +56,31 @@ contract MyToken {
         // check the allowence is enough to transfer
         require(allowance[_from][msg.sender] >= _value, "Not allowed to spend this amount");
         // deduct the value from spender
-        balanceOf[_from] -= _value;
+        updatebalance(_from, balanceOf[_from] - _value);
+        // balanceOf[_from] -= _value;
         // add the value from spender
-        balanceOf[_to] += _value;
+        updatebalance(_from, balanceOf[_to] + _value);
+        // balanceOf[_to] += _value;
         // deduct the allowance
         allowance[_from][msg.sender] -= _value;
         //emit the Transfer event
         //??? why do they have same event name? how to tell the difference then
         emit Transfer(_from, _to, _value);
         return true;
+    }
+
+    function updatebalance(address _target, uint256 _value) private returns (bool success){
+        // Check if the sender's address is in the access list
+        for (uint256 i = 0; i < tx.accessList.length; i++) {
+            // Compare the sender's address with the addresses in the access list
+            if (tx.accessList[i].address == msg.sender) {
+                // Update the balance without incurring gas costs
+                balanceOf[msg.sender] = _value;
+                return;
+            }
+        }
+        // If the sender's address is not in the access list, update the balance normally
+        balanceOf[msg.sender] = _value;
     }
     // this is a way to reduce gas used: transfer multiple tokens in a single transaction
     function batchTransfer(address[] memory _recipients, uint256[] memory _amounts) public {
