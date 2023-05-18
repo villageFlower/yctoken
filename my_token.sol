@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-interface TargetContractInterface {
-    function transfer(address _to, uint256 _value) external returns (uint256);
-}
+// interface TargetContractInterface {
+//     function transfer(address _to, uint256 _value) external returns (uint256);
+// }
 
 // this is a contract with name MyToken
 contract MyToken {
@@ -38,6 +38,7 @@ contract MyToken {
         //deduct the value from sender's balance
         balanceOf[msg.sender] -= _value;
         //add the value to receiver's balance
+        
         balanceOf[_to] += _value;
         // emit the event
         emit Transfer(msg.sender, _to, _value);

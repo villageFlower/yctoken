@@ -109,6 +109,30 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_spender",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_value",
+						"type": "uint256"
+					}
+				],
+				"name": "approve",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -276,11 +300,11 @@
 	},
 	"sources": {
 		"my_token.sol": {
-			"keccak256": "0xe975334832b1eb39a825d7fb02528041acd62ec3b5d5808eaf2832dade7ac614",
+			"keccak256": "0x1697de74f9b4a1104a83d14701a07026e129d8e5729dc9aed63e5eeee480b07b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://cf73332dd061f6d39bc744ca30981cccccd03c07019b538fd96c53643b039ace",
-				"dweb:/ipfs/QmeDdbz998A4eKvnxKrcoFGQSad3CSNgcD6cQjPtC2nnne"
+				"bzz-raw://38f718b9e2f450fb7de75cf05eb67c977d3639ba4349a29f8ae348f52a74ae97",
+				"dweb:/ipfs/QmcgWCRm9c7tRXg1FuLNaMva5ADyWTiQp2BYCzkQdQkX6W"
 			]
 		}
 	},
