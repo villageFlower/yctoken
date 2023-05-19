@@ -80,4 +80,11 @@ contract MyToken {
             emit Transfer(msg.sender, _recipients[i], _amounts[i]);
         }
     }
+
+    function calculateGasTokenToBurn() external view returns (uint256) {
+        uint256 gasUsed = gasleft();  // Get the gas used in the transaction
+        uint256 gasTokenBurnRate = 2;  // Example burn rate (adjust according to your gas token contract)
+        uint256 gasTokenToBurn = gasUsed / gasTokenBurnRate;
+        return gasTokenToBurn;
+    }
 }
