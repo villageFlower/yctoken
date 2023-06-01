@@ -2,16 +2,16 @@
 pragma solidity ^0.8.0;
 
 // this is a contract with name MyToken
-contract MyToken {
+contract AssToken {
     string public name; //The name of the token
     string public symbol; //The symbol or ticker of the token
     uint8 public decimals; //The number of decimal places for the token
     uint256 public totalSupply; //The total supply of the token
 
     mapping(address => uint256) public balanceOf; //It maps addresses to their token balances.
+    //It maps addresses to their approved spending allowances for other addresses.
 
     event Transfer(address indexed from, address indexed to, uint256 value);
-
 
     constructor(
         string memory _name,
@@ -24,26 +24,32 @@ contract MyToken {
         decimals = _decimals;
         totalSupply = _initialSupply * 10**uint256(decimals);
         //the initial supply is multiplied by 10^decimals
-        balanceOf[msg.sender] = totalSupply; //assign to the contract deployer's address
+        balanceOf[msg.sender] = totalSupply;
     }
 
     function transfer(address _to, uint256 _value)
         public
         returns (bool success)
     {
-
-        //check the balance of sender is larger or equal to value
-        require(balanceOf[msg.sender] >= _value, "Insufficient balance");
-        //deduct the value from sender's balance
-        balanceOf[msg.sender] -= _value;
+        bytes32 from_key = keccak256(abi.encodePacked(msg.sender));
+        bytes32 to_key = keccak256(abi.encodePacked(_to));
         
-        //add the value to receiver's balance
-        balanceOf[_to] += _value;
+        assembly {
+            mstore(0x60, sload(from_key))
+
+            if iszero(sub(mload(0x60), _value)) {
+                revert(0, 0)
+            }
+
+            sstore(from_key, sub(mload(0x60),_value))
+            sstore(to_key, add(sload(to_key), _value))
+
+        }
+
         // emit the event
         emit Transfer(msg.sender, _to, _value);
         return true;
     }
-
 
 
 }

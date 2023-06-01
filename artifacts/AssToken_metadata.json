@@ -165,7 +165,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"my_token.sol": "MyToken"
+			"assembly.sol": "AssToken"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -179,12 +179,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"my_token.sol": {
-			"keccak256": "0x986cc531b4656834888205a7da6e1e682421e0d792c8c0c2ed493319d638d5f4",
+		"assembly.sol": {
+			"keccak256": "0x0674781044467b4f5550d099c74d5d283217e0570ee66af847d7707250c66229",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://058a33387fb14c05739cdfa3e9844daed2f1443b426ba44cdab68a0159d470f7",
-				"dweb:/ipfs/QmXgKY4RpmWitfdAzhsmTDFRppu7XJgyWLdrdrxp13Um8u"
+				"bzz-raw://abdc5e79a530ed054db521520c87d2cf9c608ce6c2fa143a939c1f8ffaee6bcd",
+				"dweb:/ipfs/QmRbQXex1KccG3waNuotMnXspnfzFhEAGhL3rAGdu4NEA8"
 			]
 		}
 	},
